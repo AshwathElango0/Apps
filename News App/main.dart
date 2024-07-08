@@ -41,7 +41,7 @@ class NewsPageState extends State<NewsPage> {
   }
 
   Future<void> fetchCategories() async {
-    final response = await http.get(Uri.parse('http://192.168.1.13:5000/categories'));
+    final response = await http.get(Uri.parse('http://<Your_IP_address>:5000/categories'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -56,7 +56,7 @@ class NewsPageState extends State<NewsPage> {
 
   Future<void> fetchNews() async {
     final categoryQuery = _selectedCategory != null ? '?category=$_selectedCategory' : '';
-    final response = await http.get(Uri.parse('http://192.168.1.13:5000/news$categoryQuery'));
+    final response = await http.get(Uri.parse('http://<Your_IP_address>:5000/news$categoryQuery'));
 
     if (response.statusCode == 200) {
       setState(() {

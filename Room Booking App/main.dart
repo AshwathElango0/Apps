@@ -77,7 +77,7 @@ class BookRoomPageState extends State<BookRoomPage> {
 
   Future<void> createBooking(Booking booking) async {
     final response = await http.post(
-      Uri.parse('http://192.168.1.13:5000/bookings'),  // Replace with your actual IP
+      Uri.parse('http://<Your_IP_address>:5000/bookings'),  // Replace with your actual IP
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(booking.toJson()),
     );
@@ -192,7 +192,7 @@ class ViewBookingsPage extends StatelessWidget {
   const ViewBookingsPage({super.key});
 
   Future<List<Booking>> fetchBookings() async {
-    final response = await http.get(Uri.parse('http://192.168.1.13:5000/bookings'));  // Replace with your actual IP
+    final response = await http.get(Uri.parse('http://<Your_IP_address>:5000/bookings'));  // Replace with your actual IP
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);
       return body.map((dynamic item) => Booking.fromJson(item)).toList();
